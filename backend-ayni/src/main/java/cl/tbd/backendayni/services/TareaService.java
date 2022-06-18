@@ -2,8 +2,6 @@ package cl.tbd.backendayni.services;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,49 +15,80 @@ import cl.tbd.backendayni.repositories.TareaRepository;
 
 
 @RestController
+@RequestMapping("/tarea")
 public class TareaService {
     private final TareaRepository tareaRepository;
 
+    /**
+     * @param tareaRepository
+     */
     TareaService(TareaRepository tareaRepository) {
         this.tareaRepository = tareaRepository;
     }
 
-    @GetMapping("/tarea")
+    /**
+     * @return {@value} List<Tarea> lista de tareas
+     */
+    @GetMapping
     public List<Tarea> getAll() {
         return tareaRepository.getAll();
     }
 
-    @PostMapping("/tarea/create")
+    /**
+     * @param tarea tarea a crear
+     * @return {@value} Tarea tarea
+     */
+    @PostMapping("/create")
     @ResponseBody
     public Tarea createTarea(@RequestBody Tarea tarea){
         Tarea newTarea = tareaRepository.createTarea(tarea);
         return newTarea;
     }
 
-    @GetMapping("/tarea/count")
+    /**
+     * @return {@value} cantidad de tareas
+     */
+    @GetMapping("/count")
     public String countTarea(){
         int total = tareaRepository.countTareas();
         return String.format("Se tienen %s tareas.", total);
     }
 
-    @RequestMapping(value = "/tarea/deleteById/{id}", method = RequestMethod.DELETE)
+    /**
+     * @param id id de tarea
+     * @return void
+     */
+    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteTarea(@PathVariable long id) {
         tareaRepository.deleteTareaById(id);
     }
 
-    @RequestMapping(value = "/tarea/updateById/{id}", method = RequestMethod.PUT)
+    /**
+     * @param id id de tarea
+     * @return void
+     */
+    @RequestMapping(value = "/updateById/{id}", method = RequestMethod.PUT)
     public void updateTarea(@RequestBody Tarea tarea) {
         tareaRepository.updateTarea(tarea);
     }
 
-    @RequestMapping(value = "/tarea/getById/{id}", method = RequestMethod.GET)
+    /**
+     * @param id id de tarea
+     * @return {@value} <List>Tarea tarea
+     */
+    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
     public List<Tarea> getTareaById(@PathVariable long id) {
         return tareaRepository.showTareaById(id);
     }  
-
-    @RequestMapping(value = "/tarea/getAlltareasId/{id}",method = RequestMethod.GET)
-    public List<Tarea> getAllTareasEmergency(@PathVariable long id){
-        return tareaRepository.getAllTareasEmergency(id);
-
+    
+    /**
+     * @param id id de la emergencia
+     * @return {@value} <List>Tarea tarea
+     */
+    @RequestMapping(value = "/getTareaByIdEmergencia/{id}",method = RequestMethod.GET)
+    public List<Tarea> getTareaByIdEmergencia(@PathVariable long id){
+        return tareaRepository.getTareaByIdEmergencia(id);
     }
+
+
 }

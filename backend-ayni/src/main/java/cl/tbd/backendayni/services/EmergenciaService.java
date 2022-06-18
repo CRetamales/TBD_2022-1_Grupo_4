@@ -2,8 +2,6 @@ package cl.tbd.backendayni.services;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,43 +15,70 @@ import cl.tbd.backendayni.repositories.EmergenciaRepository;
 
 
 @RestController
+@RequestMapping("/emergencia")
 public class EmergenciaService {
 
+    
     private final EmergenciaRepository emergenciaRepository;
 
+    /**
+     * @param emergenciaRepository
+     */
     EmergenciaService(EmergenciaRepository emergenciaRepository) {
         this.emergenciaRepository = emergenciaRepository;
     }
 
-    @GetMapping("/emergencia")
+    /**
+     * @return {@value} List<Emergencia> lista de emergencias
+     */
+    @GetMapping
     public List<Emergencia> getAll() {
         return emergenciaRepository.getAll();
     }
 
-    @PostMapping("/emergencia/create")
+    /**
+     * @param emergencia
+     * @return {@value} Emergencia emergencia
+     */
+    @PostMapping("/create")
     @ResponseBody
     public Emergencia createEmergencia(@RequestBody Emergencia emergencia){
         Emergencia newEmergencia = emergenciaRepository.createEmergencia(emergencia);
         return newEmergencia;
     }
 
-    @GetMapping("/emergencia/count")
+    /**
+     * @return String cantidad de emergencias
+     */
+    @GetMapping("/count")
     public String countEmergencia(){
         int total = emergenciaRepository.countEmergencias();
         return String.format("Se tienen %s emergencias.", total);
     }
 
-    @RequestMapping(value = "/emergencia/deleteById/{id}", method = RequestMethod.DELETE)
+    /**
+     * @param id id de emergencia
+     * @return void
+     */
+    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteEmergencia(@PathVariable long id) {
         emergenciaRepository.deleteEmergenciaById(id);
     }
 
-    @RequestMapping(value = "/emergencia/updateById/{id}", method = RequestMethod.PUT)
+    /**
+     * @param emergencia
+     * @return void
+     */
+    @RequestMapping(value = "/updateById/{id}", method = RequestMethod.PUT)
     public void updateEmergencia(@RequestBody Emergencia emergencia) {
         emergenciaRepository.updateEmergencia(emergencia);
     }
 
-    @RequestMapping(value = "/emergencia/getById/{id}", method = RequestMethod.GET)
+    /**
+     * @param id id de emergencia
+     * @return {@value} <List>Emergencia lista de emergencias
+     */
+    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
     public List<Emergencia> getEmergenciaById(@PathVariable long id) {
         return emergenciaRepository.showEmergenciaById(id);
     }    

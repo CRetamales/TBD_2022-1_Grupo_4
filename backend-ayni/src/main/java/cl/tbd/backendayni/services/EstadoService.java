@@ -2,8 +2,6 @@ package cl.tbd.backendayni.services;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,47 +15,73 @@ import cl.tbd.backendayni.repositories.EstadoRepository;
 
 
 @RestController
+@RequestMapping("/estado")
 public class EstadoService {
     private final EstadoRepository estadoRepository;
 
+    /**
+     * @param estadoRepository
+     */
     EstadoService(EstadoRepository estadoRepository){
         this.estadoRepository = estadoRepository;
     }
 
-    @GetMapping("/estado")
+    /**
+     * @return {@value} List<Estado> lista de estados
+     */
+    
+    @GetMapping
     public List<Estado> getAllEstados(){
         System.out.println(estadoRepository.getAll());
         return estadoRepository.getAll();
     }
 
 
-    @GetMapping("/estado/getById/{id}")
+    /**
+     * @param id id de estado
+     * @return {@value} Estado estado
+     */
+    @GetMapping("/getById/{id}")
     public List<Estado> getEstadoById(@PathVariable long id){
         return estadoRepository.showEstadoById(id);
     }
 
-
-    @GetMapping("/estado/count")
+    /**
+     * @param estado
+     * @return {@value} Estado estado
+     */
+    @GetMapping("/count")
     public String countEstado(){
         int total = estadoRepository.countEstados();
         return String.format("Se tienen %s estados.", total);
     }
 
 
-    @PostMapping("/estado/create")
+    /**
+     * @param estado
+     * @return {@value} Estado estado
+     */
+    @PostMapping("/create")
     @ResponseBody
     public Estado createEstado(@RequestBody Estado estado){
         Estado newEstado = estadoRepository.createEstado(estado);
         return newEstado;
     }
     
-
-    @RequestMapping(value = "/estado/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
+    /**
+     * @param estado
+     * @return void
+     */
+    @RequestMapping(value = "/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
     public void deleteEstado(@PathVariable long id){
         estadoRepository.deleteEstadoById(id);
     }
 
-    @RequestMapping(value = "/estado/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
+    /**
+     * @param estado
+     * @return void
+     */
+    @RequestMapping(value = "/updateById/{id}", method = {RequestMethod.PUT})
     public void updateEstado(@RequestBody Estado estado){
         estadoRepository.updateEstado(estado);
     }

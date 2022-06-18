@@ -1,12 +1,11 @@
 package cl.tbd.backendayni.repositories;
 
-import org.springframework.stereotype.Repository;
 import cl.tbd.backendayni.models.Tarea;
-import java.util.*;
+import java.util.List;
 
-@Repository
+/*Interface para TareaRepository*/
 public interface TareaRepository {
-    
+    //Funciones basicas de Tarea
     public int countTareas();
     public int newId();
     public List<Tarea> getAll();
@@ -14,5 +13,6 @@ public interface TareaRepository {
     public Tarea createTarea(Tarea tarea);
     public void updateTarea(Tarea tarea);
     public void deleteTareaById(long id);
-    public List<Tarea> getAllTareasEmergency(long id);
+    //Funcione Complementarias de Tarea
+    public List<Tarea> getTareaByIdEmergencia(long id);
 }

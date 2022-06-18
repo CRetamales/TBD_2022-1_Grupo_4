@@ -1,9 +1,6 @@
 package cl.tbd.backendayni.services;
 
-
 import java.util.List;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,48 +14,69 @@ import cl.tbd.backendayni.models.Institucion;
 import cl.tbd.backendayni.repositories.InstitucionRepository;
 
 @RestController
+@RequestMapping("/institucion")
 public class InstitucionService {
     private final InstitucionRepository institucionRepository;
 
+    /**
+     * @param institucionRepository
+     */
     InstitucionService(InstitucionRepository institucionRepository){
         this.institucionRepository = institucionRepository;
     }
 
-    @GetMapping("/institucion")
+    /**
+     * @return {@value} List<Institucion> lista de instituciones
+     */
+    @GetMapping
     public List<Institucion> getAllInstitucions(){
         System.out.println(institucionRepository.getAll());
         return institucionRepository.getAll();
     }
 
-
-    @GetMapping("/institucion/getById/{id}")
+    /**
+     * @param id id de institucion
+     * @return {@value} Institucion institucion
+     */
+    @GetMapping("/getById/{id}")
     public List<Institucion> getInstitucionById(@PathVariable long id){
         return institucionRepository.showInstitucionById(id);
     }
 
-
-    @GetMapping("/institucion/count")
+    /**
+     * @return String cantidad de instituciones
+     */
+    @GetMapping("/count")
     public String countInstitucion(){
         int total = institucionRepository.countInstituciones();
         return String.format("Se tienen %s instituciones.", total);
     }
 
-
-    @PostMapping("/institucion/create")
+    /**
+     * @param institucion
+     * @return {@value} Institucion institucion
+     */
+    @PostMapping("/create")
     @ResponseBody
     public Institucion createInstitucion(@RequestBody Institucion institucion){
         Institucion newInstitucion = institucionRepository.createInstitucion(institucion);
         return newInstitucion;
     }
     
-
-    @RequestMapping(value = "/institucion/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
+    /**
+     * @param id id de institucion
+     * @return {@value} Institucion institucion
+     */
+    @RequestMapping(value = "/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
     public void deleteInstitucion(@PathVariable long id){
         institucionRepository.deleteInstitucionById(id);
     }
 
-    
-    @RequestMapping(value = "/institucion/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
+    /**
+     * @param institucion
+     * @return {@value} Institucion institucion
+     */
+    @RequestMapping(value = "/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
     public void updateInstitucion(@RequestBody Institucion institucion){
         institucionRepository.updateInstitucion(institucion);
     }    
