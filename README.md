@@ -1,8 +1,8 @@
 # TBD_2022-1_Grupo_4
 
-Laboratorio numero 1 de Taller de Base de Datos 2022-1
+Laboratorio numero 2 de Taller de Base de Datos 2022-1
 
-# LABORATORIO 1 - AYNI
+# LABORATORIO 2 - AYNI
 
 # Integrantes 
 
@@ -13,6 +13,7 @@ Laboratorio numero 1 de Taller de Base de Datos 2022-1
 - Bastian Onetto
 - Carla Polanco
 - Carlos Retamales
+- Pablo Villareal
 ```
 
 La estructura del codigo se presenta de la siguiente manera:
@@ -35,7 +36,7 @@ TBD_2022-1_Grupo_4 -> - backend-ayni ->  - src/main/java/cl/tbd/backendayni ->  
 
 # INSTRUCCIONES DE USO
 
-  - Descargar el reposotorio en su formato zip y descomprimirlo en una carpeta destino (ejemplo escritorio) o clonar usando git clone https://github.com/CarlaPolanco/TBD_2022-1_Grupo_4 en la carpeta destino (ejemplo escritorio).
+  - Descargar el reposotorio en su formato zip y descomprimirlo en una carpeta destino (ejemplo escritorio) o clonar usando git clone https://github.com/CRetamales/TBD_2022-1_Grupo_4 en la carpeta destino (ejemplo escritorio).
   - Abrir dos terminales (cmd) y dirigirse a la carpeta del proyecto (ejemplo: escritorio/TBD_2022-1_Grupo_4).
   - Ya teniendo todos los requisitos para ejecutar el proyecto (*), y estando en una de las terminales en la carpeta destino, realizamos la primera parte, en la terminal 1 ingresamos "cd backend-ayni" y enter.
   - Luego de estar dentro backend-ayni debemos levantar la parte del backend del proyecto, de esta manera, ingresando "gradlew bootRun" (en caso de tener una terminal que tenga comandos de linux o powershell de windows, puede ingresar con "./gradlew bootRun"), esto levantara el apartado de backend en el puerto 8081 en localhost (http://localhost:8081).
