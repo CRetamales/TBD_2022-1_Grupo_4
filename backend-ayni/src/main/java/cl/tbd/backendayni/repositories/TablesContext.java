@@ -64,7 +64,6 @@ public class TablesContext {
         // con.createQuery("").executeUpdate();
 
         //TABLAS
-
         // Añadir valores a la tabla emergencia
 
         con.createQuery(
@@ -113,8 +112,8 @@ public class TablesContext {
                         " values ('Incendio', 'Incendio en Cerro Colorado, Valparaíso', '2022-06-11', 'Especialistas medicos, Material medico', 'No tener problemas respiratorios, Extintor', '-33.073912', '-71.627030')")
                 .executeUpdate();
 
+        
         // Insertar valores en tabla voluntario
-
         con.createQuery(
                 "insert into voluntario (correo, usuario, nombre, password, atributos) values ('michaelRThomas@gmail.com', 'Hatter','Michael Thomas', 'baebe2jei1Oh','Responsable, Esforzado')")
                 .executeUpdate();
@@ -134,9 +133,47 @@ public class TablesContext {
         con.createQuery(
                 "insert into voluntario (correo, usuario, nombre, password, atributos) values ('Dumbdlore@gmail.com', 'Merlin','Percival Dumbdlore','OoZ4baek2ch','Magia, Dominio de Miradas')")
                 .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('leslieSTaylor@gmail.com', 'Sominever', 'Leslie Taylor', 'iS2poqu7zeeN','Proactivo, Elegante')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('sherryCTomaszewski@gmail.com', 'Dought', 'Sherry Tomaszewski', 'Rooyidei1','Diligente, Pudiente')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('vetaCGalvin@gmail.com', 'Fory1957','Veta Galvin','aejoofo8Ree','Honesto, Perpicaz')")
+                .executeUpdate();		
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('Denji@gmail.com', 'Winiter','Denji','eiVoopi6xie','Simp')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('DootitleJFreeman@gmail.com', 'Watich94','Dootitle Freeman','aek6gi5Ae','Hablar con animales')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('JessicaJones@gmail.com', 'Imser1986','Jessica Jones','rai3Aecah','Superfuerza')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('Kaliuchis@gmail.com', 'Frizost1974','Kailuchis','Am0iechai','Telepatía')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('PedritoEngel@gmail.com', 'Clumadich','Pedro Engel','phoo8Ohxei6','Leer tarot')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('patrickCSaylor@gmail.com', 'Andento','Patrick Saylor','fiev3zeiDah','Sacar la carta astral, Leer la mano')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('gokuReal@gmail.com', 'Kakaroto','Son Goku','Kamehameha1234','Comer, Teletransportacion')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('KuuJOJOtarou@gmail.com', 'DolphinLover22','Kuu Jotaro','S0n0Ch1N0S4D4M3','Amante de la vida marina')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('wadewilson@canada.com', 'Piscinadelamuerte','Wade Wilson','D3adp00l','Romper la cuarta pared, Regeneracion')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('ashketchup@pokemon.com', 'MaestroPokemon','Ash Ketchup','P15a1asd1','Ser el mejor, Mejor que nadie más')")
+                .executeUpdate();		
 
         // Insertar valores en tabla tarea
-
         con.createQuery(
                 "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (1, 'Recoger basura', 'Recoger escombros, botarlos en un sitio seguro', '2022-04-21', 'Pala, Rastrillo', '-33.389804', '-70.655240')")
                 .executeUpdate();
@@ -164,9 +201,23 @@ public class TablesContext {
         con.createQuery(
                 "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (5, 'Señalizar emergencia', 'Colocar los señalimientos disponibles para advertir en las carreteras', '2022-06-25', 'Chaqueta reflectante, Linterna', '-32.878800', '-71.455213')")
                 .executeUpdate();
+        con.createQuery(
+                "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (6, 'Limpiar calles', 'Limpiar las calles aleñadas', '2022-06-11', 'Linterna, Pala', '-31.914141', '-71.512250')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (7, 'Levantar escombros', 'Realizar la extracción de escombros para restablecer carreteras', '2022-04-15', 'Chuzo, Bolsas', '-32.880890', '-71.454937')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (8, 'Buscar perro', 'Se perdio un perro con chip dentro del sector de Estacion Central', '2022-06-11', 'Silbato, Juguetes de perro', '-33.389804', '-70.655240')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (9, 'Control de maleza', 'Casas con excesiva maleza presentan un peligro para la vecindad', '2022-06-11', 'Tijeras de Podar, Bolsas', '-33.024652', '-71.548455')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea (id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude) values (6, 'Busqueda de animales', 'Examinar las areas por especies o animales que requieran atención', '2022-04-26', 'Binoculares, Walkie Talkies', '-40.355142', '-72.483366')")
+                .executeUpdate();
 
         // Insertar valores en tabla estado
-
         con.createQuery("insert into estado (nombre) values ('Asignada')")
                 .executeUpdate();
         con.createQuery("insert into estado (nombre) values ('Rechazada')")
@@ -177,7 +228,6 @@ public class TablesContext {
                 .executeUpdate();
 
         // Insertar valores en tabla habilidad
-
         con.createQuery("insert into habilidad (nombre) values ('Correr rapido')")
                 .executeUpdate();
 
@@ -254,9 +304,47 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '6')")
                 .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('100', '1', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '1', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '1', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '1', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '1', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '1', '19')")
+                .executeUpdate();
 
         //Tarea 2
-
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '1')")
                 .executeUpdate();
@@ -275,9 +363,47 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '6')")
                 .executeUpdate();
-        
-        //Tarea 3
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '2', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '2', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '2', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '2', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '2', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '2', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '2', '19')")
+                .executeUpdate();
 
+        //Tarea 3
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '1')")
                 .executeUpdate();
@@ -296,9 +422,47 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '6')")
                 .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '3', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '3', '19')")
+                .executeUpdate();
         
         //Tarea 4
-
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '1')")
                 .executeUpdate();
@@ -317,7 +481,45 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '6')")
                 .executeUpdate();
-        
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '4', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '4', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '4', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '4', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '4', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '4', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '4', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '4', '19')")
+                .executeUpdate();
         //Tarea 5
 
         con.createQuery(
@@ -338,7 +540,46 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '6')")
                 .executeUpdate();
-        
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '5', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '5', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '5', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '5', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '5', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '5', '19')")
+                .executeUpdate();
+
         //Tarea 6
 
         con.createQuery(
@@ -359,7 +600,46 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '6')")
                 .executeUpdate();
-        
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '6', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '6', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '6', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '6', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '6', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '6', '19')")
+                .executeUpdate();
+
         //Tarea 7
 
         con.createQuery(
@@ -379,6 +659,45 @@ public class TablesContext {
                 .executeUpdate();
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '6')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '7', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '7', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '7', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '7', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '7', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '7', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '7', '19')")
                 .executeUpdate();
         
         //Tarea 8
@@ -401,7 +720,46 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '6')")
                 .executeUpdate();
-        
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '8', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '8', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '8', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '8', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '8', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '8', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '8', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '8', '19')")
+                .executeUpdate();
+
         //Tarea 9
 
         con.createQuery(
@@ -422,7 +780,346 @@ public class TablesContext {
         con.createQuery(
                 "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '6')")
                 .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '9', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '9', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '9', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '9', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '9', '19')")
+                .executeUpdate();
+
+        //Tarea 10
+
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '10', '1')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '10', '2')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '10', '3')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '10', '4')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '10', '5')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '10', '6')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '10', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('100', '10', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '10', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '10', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '10', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('100', '10', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '10', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '10', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '10', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '10', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '10', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '10', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '10', '19')")
+                .executeUpdate();
+
+        //Tarea 11
+
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '1')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '11', '2')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '11', '3')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '4')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '11', '5')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '11', '6')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '11', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '11', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '11', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '11', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '11', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '11', '19')")
+                .executeUpdate();
+
+        //Tarea 12
+
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '12', '1')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '2')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '3')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '4')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '12', '5')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '6')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '12', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '12', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '12', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '12', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '12', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '12', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('33.3', '12', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('66.6', '12', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '12', '19')")
+                .executeUpdate();
         
+        //Tarea 13
+
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '13', '1')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '13', '2')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '13', '3')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '4')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '5')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '6')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('75', '13', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '13', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('50', '13', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '13', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('75', '13', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '13', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('0', '13', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '13', '19')")
+                .executeUpdate();
+
+        //Tarea 14
+
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('18.75', '14', '1')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('31.25', '14', '2')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('18.75', '14', '3')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('31.25', '14', '4')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '5')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('18.75', '14', '6')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '14', '7')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('37.5', '14', '8')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '9')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '14', '10')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('18.75', '14', '11')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '12')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('18.75', '14', '13')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '14')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '15')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('25', '14', '16')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '17')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '18')")
+                .executeUpdate();
+        con.createQuery(
+                "insert into ranking (porcentaje, id_tarea, id_voluntario) values ('12.5', '14', '19')")
+                .executeUpdate();
+
         //Tablas Intermedias
 
         // Insertar valores en tabla intermedia emergencia_habilidad
@@ -499,8 +1196,96 @@ public class TablesContext {
         con.createQuery(
                 "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (5, 2)")
                 .executeUpdate();
-        
-                // Insertar valores en tabla intermedia estado_tarea
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (6, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (6, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (6, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (7, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (7, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (7, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (8, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (8, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (8, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (9, 12)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (9, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (9, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (9, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 1)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 8)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 11)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 12)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 13)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 14)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 15)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into emergencia_habilidad (id_emergencia, id_habilidad) values (10, 16)")
+                .executeUpdate();
+
+
+        // Insertar valores en tabla intermedia estado_tarea
 
         con.createQuery(
                 "insert into estado_tarea (id_estado, id_tarea) values (2, 1)")
@@ -528,6 +1313,21 @@ public class TablesContext {
                 .executeUpdate();
         con.createQuery(
                 "insert into estado_tarea (id_estado, id_tarea) values (1, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into estado_tarea (id_estado, id_tarea) values (4, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into estado_tarea (id_estado, id_tarea) values (1, 11)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into estado_tarea (id_estado, id_tarea) values (2, 12)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into estado_tarea (id_estado, id_tarea) values (3, 13)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into estado_tarea (id_estado, id_tarea) values (1, 14)")
                 .executeUpdate();
 
         // Insertar valores en tabla intermedia tarea_habilidad
@@ -613,7 +1413,93 @@ public class TablesContext {
         con.createQuery(
                 "insert into tarea_habilidad (id_tarea, id_habilidad) values (9, 2)")
                 .executeUpdate();
-        
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (10, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (10, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (10, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (11, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (11, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (11, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (12, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (12, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (12, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (13, 12)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (13, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (13, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (13, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 1)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 8)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 11)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 12)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 13)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 14)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 15)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into tarea_habilidad (id_tarea, id_habilidad) values (14, 16)")
+                .executeUpdate();
 
         // Insertar valores en tabla intermedia voluntario_habilidad
 
@@ -682,6 +1568,120 @@ public class TablesContext {
                 .executeUpdate();
         con.createQuery(
                 "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (6, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (7, 1)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (7, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (7, 8)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (7, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (8, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (8, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (8, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (8, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (8, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (8, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (9, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (9, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (10, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (10, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (10, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (10, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (11, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (11, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (11, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (12, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (12, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (13, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (13, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (13, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (14, 2)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (14, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (15, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (15, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (16, 3)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (16, 6)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (16, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (16, 9)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (17, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (17, 10)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (18, 4)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (18, 5)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (19, 7)")
+                .executeUpdate();
+        con.createQuery(
+                "insert into voluntario_habilidad (id_voluntario, id_habilidad) values (19, 10)")
                 .executeUpdate();
     }
 
