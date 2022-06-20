@@ -3,6 +3,7 @@ package cl.tbd.backendayni.repositories;
 import cl.tbd.backendayni.models.Emergencia;
 import org.sql2o.Sql2o;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -90,7 +91,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         Connection conn = sql2o.open();
         String SQL_INSERT = "INSERT INTO emergencia(nombre, descripcion, fecha,reqs_grupales, reqs_individuales,longitude,latitude, geom)"
                 +
-                "VALUES(:nombre2, :descripcion2, :fecha2, :reqs_grupales2, :reqs_individuales2, :longitude2, :latitude2, :geom2)";
+                "VALUES(:nombre2, :descripcion2, :fecha2, :reqs_grupales2, :reqs_individuales2, :longitude2, :latitude2, ST_MakePoint(longitude2, latitude2))";
         try {
             conn.createQuery(SQL_INSERT)
                     .addParameter("nombre2", emergencia.getNombre())
@@ -100,12 +101,8 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                     .addParameter("reqs_individuales2", emergencia.getReqs_individuales())
                     .addParameter("longitude2", emergencia.getLongitude())
                     .addParameter("latitude2", emergencia.getLatitude())
-                    .addParameter("geom2", emergencia.getGeom())
                     .executeUpdate();
             emergencia.setId(newId());
-            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
-                    .addParameter("id", emergencia.getId())
-                    .executeUpdate();
 
             return emergencia;
         } catch (Exception e) {
@@ -158,8 +155,8 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                     .addParameter("id2", emergencia.getId())
                     .addParameter("geom2", emergencia.getGeom())
                     .executeUpdate();
-            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
-                    .addParameter("id", emergencia.getId())
+            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id2")
+                    .addParameter("id2", emergencia.getId())
                     .executeUpdate();
 
         } catch (Exception e) {

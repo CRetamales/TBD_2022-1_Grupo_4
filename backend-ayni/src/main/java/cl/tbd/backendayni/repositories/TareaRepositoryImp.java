@@ -106,7 +106,7 @@ public class TareaRepositoryImp implements TareaRepository {
 
         String SQL_INSERT = "INSERT INTO tarea(id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, geom)"
                 +
-                "VALUES (:id_emergencia2, :nombre2, :descripcion2, :fecha2, :requerimientos2, :longitude2, :latitude2, :geom2)";
+                "VALUES (:id_emergencia2, :nombre2, :descripcion2, :fecha2, :requerimientos2, :longitude2, :latitude2, ST_MakePoint(longitude2, latitude2))";
 
         try {
             conn.createQuery(SQL_INSERT)
@@ -117,12 +117,8 @@ public class TareaRepositoryImp implements TareaRepository {
                     .addParameter("requerimientos2", tarea.getRequerimientos())
                     .addParameter("longitude2", tarea.getLongitude())
                     .addParameter("latitude2", tarea.getLatitude())
-                    .addParameter("geom2", tarea.getGeom())
                     .executeUpdate();
             tarea.setId(newId());
-            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
-                    .addParameter("id", tarea.getId())
-                    .executeUpdate();
 
             return tarea;
 
@@ -175,8 +171,8 @@ public class TareaRepositoryImp implements TareaRepository {
                     .addParameter("id2", tarea.getId())
                     .addParameter("geom2", tarea.getGeom())
                     .executeUpdate();
-            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
-                    .addParameter("id", tarea.getId())
+            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id2")
+                    .addParameter("id2", tarea.getId())
                     .executeUpdate();
 
         } catch (Exception e) {
