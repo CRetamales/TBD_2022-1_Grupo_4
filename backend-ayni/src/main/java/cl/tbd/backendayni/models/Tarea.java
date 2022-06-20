@@ -2,19 +2,20 @@ package cl.tbd.backendayni.models;
 
 import java.sql.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.postgis.PGgeometry;
 
 @EntityScan
-public class Tarea{
-	//ATRIBUTOS DE TAREA
-    /**
-	 * @param id de la tarea 
-	 * @param id_emergencia de la tarea
-	 * @param nombre de la tarea 
-	 * @param descripcion de la tarea 
-	 * @param fecha de la tarea 
+public class Tarea {
+	// ATRIBUTOS DE TAREA
+	/**
+	 * @param id             de la tarea
+	 * @param id_emergencia  de la tarea
+	 * @param nombre         de la tarea
+	 * @param descripcion    de la tarea
+	 * @param fecha          de la tarea
 	 * @param requerimientos de la tarea
-	 * @param longitude de la tarea 
-	 * @param latitude de la tarea 
+	 * @param longitude      de la tarea
+	 * @param latitude       de la tarea
 	 */
 
 	private long id;
@@ -25,13 +26,15 @@ public class Tarea{
 	private String requerimientos;
 	private long longitude;
 	private long latitude;
+	private PGgeometry punto;
 
-	//CONSTRUCTOR TAREA
-	public Tarea(){
+	// CONSTRUCTOR TAREA
+	public Tarea() {
 	}
 
-	//CONSTRUCTOR TAREA
-	public Tarea(long id, long id_emergencia, String nombre, String descripcion, Date fecha, String requerimientos, long longitude, long latitude){
+	// Constructor de la clase Tarea
+	public Tarea(long id, long id_emergencia, String nombre, String descripcion, Date fecha, String requerimientos,
+			long longitude, long latitude, PGgeometry punto) {
 		this.id = id;
 		this.id_emergencia = id_emergencia;
 		this.nombre = nombre;
@@ -40,9 +43,10 @@ public class Tarea{
 		this.requerimientos = requerimientos;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		this.punto = punto;
 	}
 
-	//GETTERS TAREA
+	// GETTERS TAREA
 
 	/**
 	 * @return id
@@ -100,10 +104,17 @@ public class Tarea{
 		return latitude;
 	}
 
-	//SETTERS TAREA
+	/**
+	 * @return punto
+	 */
+	public PGgeometry getPunto() {
+		return punto;
+	}
+
+	// SETTERS TAREA
 
 	/**
-	 * @param id de la tarea 
+	 * @param id de la tarea
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -117,21 +128,21 @@ public class Tarea{
 	}
 
 	/**
-	 * @param nombre de la tarea 
+	 * @param nombre de la tarea
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	/**
-	 * @param descripcion de la tarea 
+	 * @param descripcion de la tarea
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
 	/**
-	 * @param fecha de la tarea 
+	 * @param fecha de la tarea
 	 */
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
@@ -145,28 +156,32 @@ public class Tarea{
 	}
 
 	/**
-	 * @param longitude de la tarea 
+	 * @param longitude de la tarea
 	 */
 	public void setLongitude(long longitude) {
 		this.longitude = longitude;
 	}
 
 	/**
-	 * @param latitude de la tarea 
+	 * @param latitude de la tarea
 	 */
 	public void setLatitude(long latitude) {
 		this.latitude = latitude;
 	}
 
-	//TOSTRING TAREA
-	
 	/**
-	 * @return String con los datos de la tarea
+	 * @param punto de la tarea
 	 */
-	@Override
-	public String toString() {
-		return "Tarea [id=" + id + ", id_emergencia=" + id_emergencia + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha + ", requerimientos=" + requerimientos + ", longitude=" + longitude + ", latitude=" + latitude + "]";
+	public void setPunto(PGgeometry punto) {
+		this.punto = punto;
 	}
 
+	// TOSTRING TAREA
+	@Override
+	public String toString() {
+		return "Tarea [id=" + id + ", id_emergencia=" + id_emergencia + ", nombre=" + nombre + ", descripcion="
+				+ descripcion + ", fecha=" + fecha + ", requerimientos=" + requerimientos + ", longitude=" + longitude
+				+ ", latitude=" + latitude + "]";
+	}
 
 }
