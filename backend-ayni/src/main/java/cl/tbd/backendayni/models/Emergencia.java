@@ -2,22 +2,24 @@ package cl.tbd.backendayni.models;
 
 import java.sql.Date;
 
+import org.postgis.PGgeometry;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
 public class Emergencia {
     /**
-	* ATRIBUTOS DE Emergencia
-	* @param id de la emergencia
-	* @param nombre de la emergencia
-    * @param descripcion de la emergencia
-    * @param fecha de la emergencia
-    * @param reqs_grupales de la emergencia
-    * @param reqs_individuales de la emergencia
-    * @param longitude de la emergencia
-    * @param latitude de la emergencia
-
-	*/
+     * ATRIBUTOS DE Emergencia
+     * 
+     * @param id                de la emergencia
+     * @param nombre            de la emergencia
+     * @param descripcion       de la emergencia
+     * @param fecha             de la emergencia
+     * @param reqs_grupales     de la emergencia
+     * @param reqs_individuales de la emergencia
+     * @param longitude         de la emergencia
+     * @param latitude          de la emergencia
+     * @param punto             de la emergencia
+     */
     private long id;
     private String nombre;
     private String descripcion;
@@ -26,12 +28,15 @@ public class Emergencia {
     private String reqs_individuales;
     private long longitude;
     private long latitude;
+    private PGgeometry punto;
 
-    //CONSTRUCTOR Emergencia
-    public Emergencia(){
+    // CONSTRUCTOR Emergencia
+    public Emergencia() {
     }
-    //CONSTRUCTOR Emergencia
-    public Emergencia(long id, String nombre, String descripcion, Date fecha, String reqs_grupales, String reqs_individuales, long longitude, long latitude){
+
+    // CONSTRUCTOR Emergencia
+    public Emergencia(long id, String nombre, String descripcion, Date fecha, String reqs_grupales,
+            String reqs_individuales, long longitude, long latitude, PGgeometry punto) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -40,10 +45,11 @@ public class Emergencia {
         this.reqs_individuales = reqs_individuales;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.punto = punto;
     }
 
-    //GETTERS Emergencia
-    
+    // GETTERS Emergencia
+
     /**
      * @return id
      */
@@ -59,15 +65,15 @@ public class Emergencia {
     }
 
     /**
-	 * @return descripcion
-	 */
+     * @return descripcion
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
     /**
-	 * @return fecha
-	 */
+     * @return fecha
+     */
     public Date getFecha() {
         return fecha;
     }
@@ -100,7 +106,14 @@ public class Emergencia {
         return latitude;
     }
 
-    //SETTERS Emergencia
+    /**
+     * @return punto
+     */
+    public PGgeometry getPunto() {
+        return punto;
+    }
+
+    // SETTERS Emergencia
 
     /**
      * @param id id a setear
@@ -158,23 +171,23 @@ public class Emergencia {
         this.latitude = latitude;
     }
 
-    //TOSTRING Emergencia
+    /**
+     * @param punto punto a setear
+     */
+    public void setPunto(PGgeometry punto) {
+        this.punto = punto;
+    }
+
+    // TOSTRING Emergencia
 
     /**
-     * @return toString de la emergencia
+     * @return String de la emergencia
      */
     @Override
     public String toString() {
-        return "Emergencia{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", fecha=" + fecha +
-                ", reqs_grupales='" + reqs_grupales + '\'' +
-                ", reqs_individuales='" + reqs_individuales + '\'' +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                '}';
+        return "Emergencia [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha
+                + ", reqs_grupales=" + reqs_grupales + ", reqs_individuales=" + reqs_individuales + ", longitude="
+                + longitude + ", latitude=" + latitude + ", punto=" + punto + "]";
     }
 
 }

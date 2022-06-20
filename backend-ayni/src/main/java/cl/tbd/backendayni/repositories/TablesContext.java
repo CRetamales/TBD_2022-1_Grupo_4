@@ -1685,6 +1685,8 @@ public class TablesContext {
 
                 con.createQuery("alter table tarea add punto geometry").executeUpdate();
                 con.createQuery("update tarea set punto = ST_MakePoint(longitude, latitude)").executeUpdate();
+                con.createQuery("alter table emergencia add punto geometry").executeUpdate();
+                con.createQuery("update emergencia set punto = ST_MakePoint(longitude, latitude)").executeUpdate();
 
         }
 

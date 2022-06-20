@@ -16,6 +16,7 @@ public class Tarea {
 	 * @param requerimientos de la tarea
 	 * @param longitude      de la tarea
 	 * @param latitude       de la tarea
+	 * @param punto          de la tarea
 	 */
 
 	private long id;
