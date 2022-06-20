@@ -16,7 +16,7 @@ public class Tarea {
 	 * @param requerimientos de la tarea
 	 * @param longitude      de la tarea
 	 * @param latitude       de la tarea
-	 * @param punto          de la tarea
+	 * @param geom          de la tarea
 	 */
 
 	private long id;
@@ -27,7 +27,7 @@ public class Tarea {
 	private String requerimientos;
 	private long longitude;
 	private long latitude;
-	private PGgeometry punto;
+	private PGgeometry geom;
 
 	// CONSTRUCTOR TAREA
 	public Tarea() {
@@ -35,7 +35,7 @@ public class Tarea {
 
 	// Constructor de la clase Tarea
 	public Tarea(long id, long id_emergencia, String nombre, String descripcion, Date fecha, String requerimientos,
-			long longitude, long latitude, PGgeometry punto) {
+			long longitude, long latitude, PGgeometry geom) {
 		this.id = id;
 		this.id_emergencia = id_emergencia;
 		this.nombre = nombre;
@@ -44,7 +44,7 @@ public class Tarea {
 		this.requerimientos = requerimientos;
 		this.longitude = longitude;
 		this.latitude = latitude;
-		this.punto = punto;
+		this.geom = geom;
 	}
 
 	// GETTERS TAREA
@@ -106,10 +106,10 @@ public class Tarea {
 	}
 
 	/**
-	 * @return punto
+	 * @return geom
 	 */
-	public PGgeometry getPunto() {
-		return punto;
+	public PGgeometry getGeom() {
+		return geom;
 	}
 
 	// SETTERS TAREA
@@ -171,10 +171,10 @@ public class Tarea {
 	}
 
 	/**
-	 * @param punto de la tarea
+	 * @param geom de la tarea
 	 */
-	public void setPunto(PGgeometry punto) {
-		this.punto = punto;
+	public void setGeom(PGgeometry geom) {
+		this.geom = geom;
 	}
 
 	// TOSTRING TAREA

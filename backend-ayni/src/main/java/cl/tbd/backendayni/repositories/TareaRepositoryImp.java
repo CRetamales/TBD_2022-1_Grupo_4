@@ -104,9 +104,9 @@ public class TareaRepositoryImp implements TareaRepository {
     public Tarea createTarea(Tarea tarea) {
         Connection conn = sql2o.open();
 
-        String SQL_INSERT = "INSERT INTO tarea(id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, punto)"
+        String SQL_INSERT = "INSERT INTO tarea(id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, geom)"
                 +
-                "VALUES (:id_emergencia2, :nombre2, :descripcion2, :fecha2, :requerimientos2, :longitude2, :latitude2, :punto2)";
+                "VALUES (:id_emergencia2, :nombre2, :descripcion2, :fecha2, :requerimientos2, :longitude2, :latitude2, :geom2)";
 
         try {
             conn.createQuery(SQL_INSERT)
@@ -117,10 +117,10 @@ public class TareaRepositoryImp implements TareaRepository {
                     .addParameter("requerimientos2", tarea.getRequerimientos())
                     .addParameter("longitude2", tarea.getLongitude())
                     .addParameter("latitude2", tarea.getLatitude())
-                    .addParameter("punto2", tarea.getPunto())
+                    .addParameter("geom2", tarea.getGeom())
                     .executeUpdate();
             tarea.setId(newId());
-            conn.createQuery("UPDATE tarea SET punto = ST_MakePoint(longitude, latitude) WHERE id = :id")
+            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
                     .addParameter("id", tarea.getId())
                     .executeUpdate();
 
@@ -160,7 +160,7 @@ public class TareaRepositoryImp implements TareaRepository {
     @Override
     public void updateTarea(Tarea tarea) {
 
-        String SQL_UPDATE = "UPDATE tarea SET id_emergencia = :id_emergencia2, nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, requerimientos = :requerimientos2, longitude = :longitude2, latitude = :latitude2, punto = :punto2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE tarea SET id_emergencia = :id_emergencia2, nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, requerimientos = :requerimientos2, longitude = :longitude2, latitude = :latitude2, geom = :geom2, id = :id2 WHERE id = :id2";
 
         try (Connection conn = sql2o.open()) {
 
@@ -173,9 +173,9 @@ public class TareaRepositoryImp implements TareaRepository {
                     .addParameter("longitude2", tarea.getLongitude())
                     .addParameter("latitude2", tarea.getLatitude())
                     .addParameter("id2", tarea.getId())
-                    .addParameter("punto2", tarea.getPunto())
+                    .addParameter("geom2", tarea.getGeom())
                     .executeUpdate();
-            conn.createQuery("UPDATE tarea SET punto = ST_MakePoint(longitude, latitude) WHERE id = :id")
+            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
                     .addParameter("id", tarea.getId())
                     .executeUpdate();
 

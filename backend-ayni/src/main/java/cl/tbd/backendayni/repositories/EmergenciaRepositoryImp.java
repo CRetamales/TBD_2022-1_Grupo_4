@@ -88,9 +88,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public Emergencia createEmergencia(Emergencia emergencia) {
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO emergencia(nombre, descripcion, fecha,reqs_grupales, reqs_individuales,longitude,latitude, punto)"
+        String SQL_INSERT = "INSERT INTO emergencia(nombre, descripcion, fecha,reqs_grupales, reqs_individuales,longitude,latitude, geom)"
                 +
-                "VALUES(:nombre2, :descripcion2, :fecha2, :reqs_grupales2, :reqs_individuales2, :longitude2, :latitude2, :punto2)";
+                "VALUES(:nombre2, :descripcion2, :fecha2, :reqs_grupales2, :reqs_individuales2, :longitude2, :latitude2, :geom2)";
         try {
             conn.createQuery(SQL_INSERT)
                     .addParameter("nombre2", emergencia.getNombre())
@@ -100,10 +100,10 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                     .addParameter("reqs_individuales2", emergencia.getReqs_individuales())
                     .addParameter("longitude2", emergencia.getLongitude())
                     .addParameter("latitude2", emergencia.getLatitude())
-                    .addParameter("punto2", emergencia.getPunto())
+                    .addParameter("geom2", emergencia.getGeom())
                     .executeUpdate();
             emergencia.setId(newId());
-            conn.createQuery("UPDATE emergencia SET punto = ST_MakePoint(longitude, latitude) WHERE id = :id")
+            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
                     .addParameter("id", emergencia.getId())
                     .executeUpdate();
 
@@ -144,7 +144,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public void updateEmergencia(Emergencia emergencia) {
 
-        String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, reqs_grupales = :reqs_grupales2, reqs_individuales = :reqs_individuales2, longitude = :longitude2, latitude = :latitude2, punto = :punto2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, reqs_grupales = :reqs_grupales2, reqs_individuales = :reqs_individuales2, longitude = :longitude2, latitude = :latitude2, geom = :geom2, id = :id2 WHERE id = :id2";
         try (Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
@@ -156,9 +156,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                     .addParameter("longitude2", emergencia.getLongitude())
                     .addParameter("latitude2", emergencia.getLatitude())
                     .addParameter("id2", emergencia.getId())
-                    .addParameter("punto2", emergencia.getPunto())
+                    .addParameter("geom2", emergencia.getGeom())
                     .executeUpdate();
-            conn.createQuery("UPDATE emergencia SET punto = ST_MakePoint(longitude, latitude) WHERE id = :id")
+            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id")
                     .addParameter("id", emergencia.getId())
                     .executeUpdate();
 

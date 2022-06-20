@@ -18,7 +18,7 @@ public class Emergencia {
      * @param reqs_individuales de la emergencia
      * @param longitude         de la emergencia
      * @param latitude          de la emergencia
-     * @param punto             de la emergencia
+     * @param geom             de la emergencia
      */
     private long id;
     private String nombre;
@@ -28,7 +28,7 @@ public class Emergencia {
     private String reqs_individuales;
     private long longitude;
     private long latitude;
-    private PGgeometry punto;
+    private PGgeometry geom;
 
     // CONSTRUCTOR Emergencia
     public Emergencia() {
@@ -36,7 +36,7 @@ public class Emergencia {
 
     // CONSTRUCTOR Emergencia
     public Emergencia(long id, String nombre, String descripcion, Date fecha, String reqs_grupales,
-            String reqs_individuales, long longitude, long latitude, PGgeometry punto) {
+            String reqs_individuales, long longitude, long latitude, PGgeometry geom) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -45,7 +45,7 @@ public class Emergencia {
         this.reqs_individuales = reqs_individuales;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.punto = punto;
+        this.geom = geom;
     }
 
     // GETTERS Emergencia
@@ -107,10 +107,10 @@ public class Emergencia {
     }
 
     /**
-     * @return punto
+     * @return geom
      */
-    public PGgeometry getPunto() {
-        return punto;
+    public PGgeometry getGeom() {
+        return geom;
     }
 
     // SETTERS Emergencia
@@ -172,10 +172,10 @@ public class Emergencia {
     }
 
     /**
-     * @param punto punto a setear
+     * @param geom geom a setear
      */
-    public void setPunto(PGgeometry punto) {
-        this.punto = punto;
+    public void setGeom(PGgeometry geom) {
+        this.geom = geom;
     }
 
     // TOSTRING Emergencia
@@ -187,7 +187,7 @@ public class Emergencia {
     public String toString() {
         return "Emergencia [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha
                 + ", reqs_grupales=" + reqs_grupales + ", reqs_individuales=" + reqs_individuales + ", longitude="
-                + longitude + ", latitude=" + latitude + ", punto=" + punto + "]";
+                + longitude + ", latitude=" + latitude + ", geom=" + geom + "]";
     }
 
 }
