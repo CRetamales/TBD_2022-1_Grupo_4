@@ -93,7 +93,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         Connection conn = sql2o.open();
         String SQL_INSERT = "INSERT INTO emergencia(nombre, descripcion, fecha,reqs_grupales, reqs_individuales,longitude,latitude, geom)"
                 +
-                "VALUES(:nombre2, :descripcion2, :fecha2, :reqs_grupales2, :reqs_individuales2, :longitude2, :latitude2, ST_MakePoint(:longitude2, :latitude2))";
+                "VALUES(:nombre2, :descripcion2, :fecha2, :reqs_grupales2, :reqs_individuales2, :longitude2, :latitude2, ST_MakePoint( :latitude2,:longitude2))";
         try {
             conn.createQuery(SQL_INSERT)
                     .addParameter("nombre2", emergencia.getNombre())
@@ -143,7 +143,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public void updateEmergencia(Emergencia emergencia) {
 
-        String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, reqs_grupales = :reqs_grupales2, reqs_individuales = :reqs_individuales2, longitude = :longitude2, latitude = :latitude2, geom = ST_MakePoint(:longitude2, :latitude2), id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, reqs_grupales = :reqs_grupales2, reqs_individuales = :reqs_individuales2, longitude = :longitude2, latitude = :latitude2, geom = ST_MakePoint( :latitude2,:longitude2), id = :id2 WHERE id = :id2";
         try (Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
@@ -156,7 +156,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                     .addParameter("latitude2", emergencia.getLatitude())
                     .addParameter("id2", emergencia.getId())
                     .executeUpdate();
-            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id2")
+            conn.createQuery("UPDATE emergencia SET geom = ST_MakePoint( latitude,longitude) WHERE id = :id2")
                     .addParameter("id2", emergencia.getId())
                     .executeUpdate();
 

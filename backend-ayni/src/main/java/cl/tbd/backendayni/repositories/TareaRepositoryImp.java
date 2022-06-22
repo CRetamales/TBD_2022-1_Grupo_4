@@ -90,7 +90,7 @@ public class TareaRepositoryImp implements TareaRepository {
 
         String SQL_INSERT = "INSERT INTO tarea(id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, geom)"
                 +
-                "VALUES (:id_emergencia2, :nombre2, :descripcion2, :fecha2, :requerimientos2, :longitude2, :latitude2, ST_MakePoint(:longitude2, :latitude2))";
+                "VALUES (:id_emergencia2, :nombre2, :descripcion2, :fecha2, :requerimientos2, :longitude2, :latitude2, ST_MakePoint( :latitude2,:longitude2))";
 
         try {
             conn.createQuery(SQL_INSERT)
@@ -140,7 +140,7 @@ public class TareaRepositoryImp implements TareaRepository {
     @Override
     public void updateTarea(Tarea tarea) {
 
-        String SQL_UPDATE = "UPDATE tarea SET id_emergencia = :id_emergencia2, nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, requerimientos = :requerimientos2, longitude = :longitude2, latitude = :latitude2, geom = ST_MakePoint(:longitude2, :latitude2), id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE tarea SET id_emergencia = :id_emergencia2, nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, requerimientos = :requerimientos2, longitude = :longitude2, latitude = :latitude2, geom = ST_MakePoint( :latitude2,:longitude2), id = :id2 WHERE id = :id2";
 
         try (Connection conn = sql2o.open()) {
 
@@ -154,7 +154,7 @@ public class TareaRepositoryImp implements TareaRepository {
                     .addParameter("latitude2", tarea.getLatitude())
                     .addParameter("id2", tarea.getId())
                     .executeUpdate();
-            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(longitude, latitude) WHERE id = :id2")
+            conn.createQuery("UPDATE tarea SET geom = ST_MakePoint(latitude, longitude) WHERE id = :id2")
                     .addParameter("id2", tarea.getId())
                     .executeUpdate();
 
