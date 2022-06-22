@@ -37,7 +37,7 @@
                   <div>
                     <h1> </h1>
                       <a v-bind:href="'../TareaId/'+item.id">
-                        <button class="botonDos"><span>{{item.nombre}}</span></button>
+                        <button class="botonTres"><span>{{item.nombre}}</span></button>
                       </a>
                   </div>
                 </div>
