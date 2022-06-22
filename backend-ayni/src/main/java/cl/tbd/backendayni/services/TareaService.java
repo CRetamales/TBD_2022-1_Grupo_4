@@ -90,5 +90,13 @@ public class TareaService {
         return tareaRepository.getTareaByIdEmergencia(id);
     }
 
+    /**
+     * @param id id de la region
+     * @return {@value} <List>Tarea 
+     */
+    @RequestMapping(value = "/getTareaByIdRegion/{id}", method = RequestMethod.GET)
+    public List<Tarea> getTareaByIdRegion(@PathVariable long id){
+        return tareaRepository.getTareaByIdRegion(id);
+    }
 
 }

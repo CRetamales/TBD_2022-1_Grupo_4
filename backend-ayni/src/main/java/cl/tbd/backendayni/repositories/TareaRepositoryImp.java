@@ -60,23 +60,6 @@ public class TareaRepositoryImp implements TareaRepository {
         }
     }
 
-    /*
-     * @Override
-     * public List<Tarea> getAllTareasEmergency(long id)
-     * {
-     * try(Connection conn = sql2o.open()){
-     * return conn.
-     * createQuery("SELECT DISTINCT tFinal.id, tFinal.nombre,tFinal.descripcion,tFinal.fecha,tFinal.requerimientos FROM (SELECT tHT.id_tarea as id, tHT.nombre, tHT.descripcion, tHT.fecha, tHT.requerimientos FROM (SELECT t1.id as id_tarea, t1.nombre, t1.descripcion, t1.fecha, t1.requerimientos, t3.id FROM tarea t1, tareahabilidad t2, habilidad t3 WHERE t1.id = t2.idtarea AND t3.id = t2.idhabilidad) tHT INNER JOIN(SELECT t6.id as id_habilidad, t4.id as id_emergencia FROM emergencia t4, emergenciahabilidad t5, habilidad t6 WHERE t4.id = t5.idemergencia AND t6.id = t5.idhabilidad) tHE ON  tHT.id_tarea =tHE.id_habilidad AND tHE.id_emergencia = :id) tFinal; "
-     * )
-     * .addParameter("id", id)
-     * .executeAndFetch(Tarea.class);
-     * }catch (Exception e) {
-     * System.out.println(e.getMessage());
-     * return null;
-     * }
-     * }
-     */
-
     /**
      * @param id {@value} long id de la tarea
      * @return {@value} List<Tarea> lista de tareas
@@ -205,4 +188,26 @@ public class TareaRepositoryImp implements TareaRepository {
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    // REQUISITOS
+    /**
+     * @param id {@value} long id de la region
+     * @return {@value} List<Tarea> lista de tareas
+     * @throws Exception si no se puede obtener la lista de tareas
+     * @see cl.tbd.backendayni.repositories.TareaRepository#showTareaByIdRegion(long
+     *      id)
+     */
+    @Override
+    public List<Tarea> getTareaByIdRegion(long id){
+        String SQL_SELECT = "SELECT tarea.id, tarea.id_emergencia, tarea.nombre, tarea.descripcion, tarea.fecha, tarea.requerimientos, tarea.longitude, tarea.latitude, cast (tarea.geom as TEXT) FROM  tarea JOIN regiones ON ST_Intersects(regiones.geom,tarea.geom) WHERE regiones.id_region = :id";
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery(SQL_SELECT)
+                    .addParameter("id", id)
+                    .executeAndFetch(Tarea.class);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

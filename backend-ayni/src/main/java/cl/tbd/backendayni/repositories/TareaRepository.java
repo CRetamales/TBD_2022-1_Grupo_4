@@ -15,4 +15,6 @@ public interface TareaRepository {
     public void deleteTareaById(long id);
     //Funcione Complementarias de Tarea
     public List<Tarea> getTareaByIdEmergencia(long id);
+    //Requisitos
+    public List<Tarea> getTareaByIdRegion(long id);
 }
