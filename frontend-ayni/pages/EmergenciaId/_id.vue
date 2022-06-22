@@ -6,17 +6,7 @@
         <div v-for="(item, index) in items_emergencia" :key="index" id="formTareasID" style="background-color: #169691">
         <h1>{{item.nombre}} id: {{param}}</h1>
 
-        <!-- Mapa -->
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26652.897618664756!2d-70.71583567072133!3d-33.3811889850277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5d793bb7325%3A0xe5a14691ce225e43!2sEstadio%20Santa%20Laura!5e0!3m2!1ses-419!2scl!4v1650682393094!5m2!1ses-419!2scl"
-            width="400"
-            height="300"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-
+        <!-- Mapa -->  
         <!-- Descripcion -->
         <p>
             {{item.descripcion}}
@@ -73,38 +63,84 @@
 </template>
 
 <script>
+//Importaciones
+import 'leaflet/dist/leaflet'; //librería leaflet
+import 'leaflet/dist/leaflet.css'; //css leaflet
+var icon = require('leaflet/dist/images/marker-icon.png'); //ícono de marcadores
+//Se crea objeto ícono con el marcador
+var LeafIcon = L.Icon.extend({
+          options: {iconSize:[25, 41], iconAnchor:[12, 41], popupAnchor: [-3, -41]}
+      });
+var myIcon = new LeafIcon({iconUrl: icon});
+
+//Libreria axios
+import axios from 'axios';
 export default {
-    //Función que contiene los datos del componente
-    data(){
+    name: 'emergenciaId',
+    data:function(){
         return{
-            //Lista de ítems a mostrar
+            param:this.$route.params.id,
             items_emergencia:[],
             items_tarea:[],
-            param:[]
+            latitude:null, //Datos de nuevo punto
+            longitude:null,
+            name:'',
+            points:[], //colección de puntos cargados de la BD
+            message:'', 
+            mymap:null, //objeto de mapa(DIV)
+            selected:'',
+            //regiones:[],
         }
     },
-    mounted() {
-        this.param = this.$route.params.id;
-      },
     methods:{
-        //Función asíncrona para consultar los datos
-        getData: async function(){
-            try {
-                let response = await this.$axios.get("/emergencia/getById/"+this.$route.params.id);
-                this.items_emergencia  = response.data;
-                console.log(response);
-                let response2 = await this.$axios.get("/tarea/getTareaByIdEmergencia/"+this.$route.params.id);
-                this.items_tarea = response2.data;
-                console.log(response2);
-            } catch (error) {
-                console.log('error', error);
-            }
-        }
+        //Se obtiene la emergencia con el id
+        getEmergenciaId:function(){
+            axios.get('/emergencia/getById/'+this.param)
+            .then(response => {
+                this.items_emergencia = response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
+        //Se obtiene las tareas de la emergencia
+        getTareasEmergencia:function(){
+            axios.get('/tarea/getTareaByIdEmergencia/'+this.param)
+            .then(response => {
+                this.items_tarea = response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
+ 
     },
-    //Función que se ejecuta al cargar el componente
-    created:function(){
-        this.getData();
-    }
-}
+    mounted:function(){
 
+        //Se obtiene la emergencia con el id
+        axios.get('/emergencia/getById/'+this.param)
+        .then(response => {
+            this.items_emergencia = response.data;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+        //Se obtiene las tareas de la emergencia
+        axios.get('/tarea/getTareaByIdEmergencia/'+this.param)
+        .then(response => {
+            this.items_tarea = response.data;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },
+}
 </script>
+<style>
+/* Estilos necesarios para definir el objeto de mapa */
+#mapid { 
+  height: 400px; 
+  width:600px;
+}
+</style>
+
