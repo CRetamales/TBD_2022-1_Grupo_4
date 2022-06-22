@@ -25,8 +25,8 @@ public class Emergencia {
     private Date fecha;
     private String reqs_grupales;
     private String reqs_individuales;
-    private long longitude;
-    private long latitude;
+    private double longitude;
+    private double latitude;
     private String geom;
 
     // CONSTRUCTOR Emergencia
@@ -35,7 +35,7 @@ public class Emergencia {
 
     // CONSTRUCTOR Emergencia
     public Emergencia(long id, String nombre, String descripcion, Date fecha, String reqs_grupales,
-            String reqs_individuales, long longitude, long latitude, String geom) {
+            String reqs_individuales, double longitude, double latitude, String geom) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -94,14 +94,14 @@ public class Emergencia {
     /**
      * @return longitude
      */
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
     /**
      * @return latitude
      */
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -159,14 +159,14 @@ public class Emergencia {
     /**
      * @param longitude longitude a setear
      */
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
     /**
      * @param latitude latitude a setear
      */
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 

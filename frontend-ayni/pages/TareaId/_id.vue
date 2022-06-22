@@ -21,7 +21,10 @@
       <p>
         {{item.descripcion}}
       </p>
-
+      <!-- Coordenadas -->
+      <p>
+        {{item.longitude+','+item.latitude}}
+      </p>
       <!-- Botones -->
 
       <div class="contenedorDos">

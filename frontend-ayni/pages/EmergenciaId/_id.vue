@@ -22,6 +22,10 @@
                                 </div>
                                 <div v-for="(item,index) in items_emergencia" :key="index">
                                         <h4>{{item.descripcion}}</h4>
+                                        <!-- Coordenadas -->
+                                        <p>
+                                            {{item.longitude+','+item.latitude}}
+                                        </p>
                                 </div>
                             </p>
                         </div>

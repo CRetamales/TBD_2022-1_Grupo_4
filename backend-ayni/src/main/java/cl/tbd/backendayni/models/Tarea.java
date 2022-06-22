@@ -24,8 +24,8 @@ public class Tarea {
 	private String descripcion;
 	private Date fecha;
 	private String requerimientos;
-	private long longitude;
-	private long latitude;
+	private double longitude;
+	private double latitude;
 	private String geom;
 
 	// CONSTRUCTOR TAREA
@@ -34,7 +34,7 @@ public class Tarea {
 
 	// Constructor de la clase Tarea
 	public Tarea(long id, long id_emergencia, String nombre, String descripcion, Date fecha, String requerimientos,
-			long longitude, long latitude, String geom) {
+			double longitude, double latitude, String geom) {
 		this.id = id;
 		this.id_emergencia = id_emergencia;
 		this.nombre = nombre;
@@ -93,14 +93,14 @@ public class Tarea {
 	/**
 	 * @return longitude
 	 */
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
 	/**
 	 * @return latitude
 	 */
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
@@ -158,14 +158,14 @@ public class Tarea {
 	/**
 	 * @param longitude de la tarea
 	 */
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
 	/**
 	 * @param latitude de la tarea
 	 */
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
