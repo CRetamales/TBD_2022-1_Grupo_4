@@ -2,7 +2,6 @@ package cl.tbd.backendayni.models;
 
 import java.sql.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.postgis.PGgeometry;
 
 @EntityScan
 public class Tarea {
@@ -16,7 +15,7 @@ public class Tarea {
 	 * @param requerimientos de la tarea
 	 * @param longitude      de la tarea
 	 * @param latitude       de la tarea
-	 * @param geom          de la tarea
+	 * @param geom           de la tarea
 	 */
 
 	private long id;
@@ -27,7 +26,7 @@ public class Tarea {
 	private String requerimientos;
 	private long longitude;
 	private long latitude;
-	private PGgeometry geom;
+	private String geom;
 
 	// CONSTRUCTOR TAREA
 	public Tarea() {
@@ -35,7 +34,7 @@ public class Tarea {
 
 	// Constructor de la clase Tarea
 	public Tarea(long id, long id_emergencia, String nombre, String descripcion, Date fecha, String requerimientos,
-			long longitude, long latitude, PGgeometry geom) {
+			long longitude, long latitude, String geom) {
 		this.id = id;
 		this.id_emergencia = id_emergencia;
 		this.nombre = nombre;
@@ -108,7 +107,7 @@ public class Tarea {
 	/**
 	 * @return geom
 	 */
-	public PGgeometry getGeom() {
+	public String getGeom() {
 		return geom;
 	}
 
@@ -173,7 +172,7 @@ public class Tarea {
 	/**
 	 * @param geom de la tarea
 	 */
-	public void setGeom(PGgeometry geom) {
+	public void setGeom(String geom) {
 		this.geom = geom;
 	}
 

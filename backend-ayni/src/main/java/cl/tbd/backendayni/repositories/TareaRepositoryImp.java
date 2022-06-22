@@ -51,7 +51,8 @@ public class TareaRepositoryImp implements TareaRepository {
     @Override
     public List<Tarea> getAll() {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT * FROM tarea ORDER BY tarea.id ASC")
+            return conn.createQuery(
+                    "SELECT id, id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, cast (geom as TEXT) FROM tarea ORDER BY tarea.id ASC")
                     .executeAndFetch(Tarea.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -193,7 +194,7 @@ public class TareaRepositoryImp implements TareaRepository {
      */
     @Override
     public List<Tarea> getTareaByIdEmergencia(long id) {
-        String SQL_SELECT = "SELECT * FROM tarea WHERE tarea.id_emergencia = :id";
+        String SQL_SELECT = "SELECT id, id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, cast (geom as TEXT) FROM tarea WHERE tarea.id_emergencia = :id";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(SQL_SELECT)
                     .addParameter("id", id)
