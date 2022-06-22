@@ -53,7 +53,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     public List<Emergencia> getAll() {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(
-                    "SELECT id, nombre, descripcion, fecha, reqs_grupales, reqs_individuales, longitude, latitude, cast (geom as TEXT) FROM emergencia ORDER BY Emergencia.id ASC")
+                    "SELECT id, nombre, descripcion, fecha, reqs_grupales, reqs_individuales, longitude, latitude, ST_AsText(geom) AS geom FROM emergencia ORDER BY emergencia.id ASC")
                     .executeAndFetch(Emergencia.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -72,7 +72,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     public List<Emergencia> showEmergenciaById(long id) {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(
-                    "SELECT id, nombre, descripcion, fecha, reqs_grupales, reqs_individuales, longitude, latitude, cast (geom as TEXT) FROM emergencia WHERE emergencia.id = :id")
+                    "SELECT id, nombre, descripcion, fecha, reqs_grupales, reqs_individuales, longitude, latitude, ST_AsText(geom) AS geom FROM emergencia WHERE emergencia.id = :id")
                     .addParameter("id", id)
                     .executeAndFetch(Emergencia.class);
         } catch (Exception e) {

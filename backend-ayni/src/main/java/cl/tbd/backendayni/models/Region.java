@@ -1,18 +1,25 @@
 package cl.tbd.backendayni.models;
 
-import org.postgis.PGgeometry;
+//import org.postgis.PGgeometry;
 
 public class Region {
+    //ATRIBUTOS de REGION
+    /**
+     * @param id id 
+     * @param id_region id de la region
+     * @param nom_reg nombre de la region
+     * @param geom geometria de la region
+     */
     private long id;
     private long id_region;
     private String nom_reg;
-    private PGgeometry geom;
+    private String geom;
 
     // CONSTRUCTOR REGION
     public Region() {
     }
 
-    public Region(long id, long id_region, String nom_reg, PGgeometry geom) {
+    public Region(long id, long id_region, String nom_reg, String geom) {
         this.id = id;
         this.id_region = id_region;
         this.nom_reg = nom_reg;
@@ -32,7 +39,7 @@ public class Region {
         return nom_reg;
     }
 
-    public PGgeometry getGeom() {
+    public String getGeom() {
         return geom;
     }
 
@@ -50,7 +57,7 @@ public class Region {
         this.nom_reg = nom_reg;
     }
 
-    public void setGeom(PGgeometry geom) {
+    public void setGeom(String geom) {
         this.geom = geom;
     }
 

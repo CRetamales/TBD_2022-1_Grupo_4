@@ -13,6 +13,10 @@ public class RegionRepositoryImp implements RegionRepository {
     @Autowired
     private Sql2o sql2o;
 
+    /**
+     * @return Cantidad de regiones
+     * @throws Exception
+     */
     @Override
     public int countRegiones() {
         int total = 0;
@@ -23,6 +27,10 @@ public class RegionRepositoryImp implements RegionRepository {
         }
     }
 
+    /**
+     * @return nuevo id de region
+     * @throws Exception
+     */
     @Override
     public int newId() {
         int id = 0;
@@ -33,10 +41,14 @@ public class RegionRepositoryImp implements RegionRepository {
         }
     }
 
+    /**
+     * @return Lista de regiones
+     * @throws Exception
+     */
     @Override
     public List<Region> getAll() {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT * FROM regiones ORDER BY regiones.id_region ASC")
+            return conn.createQuery("SELECT regiones.id, regiones.id_region, regiones.nom_reg, ST_AsText(regiones.geom) AS geom FROM regiones ORDER BY regiones.id_region ASC")
                     .executeAndFetch(Region.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -44,10 +56,15 @@ public class RegionRepositoryImp implements RegionRepository {
         }
     }
 
+    /**
+     * @param id id de la region
+     * @return region
+     * @throws Exception
+     */
     @Override
     public List<Region> showRegionById(long id) {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT * FROM regiones WHERE id = :id")
+            return conn.createQuery("SELECT regiones.id, regiones.id_region, regiones.nom_reg, ST_AsText(regiones.geom) AS geom FROM regiones WHERE id_region = :id")
                     .addParameter("id", id)
                     .executeAndFetch(Region.class);
         } catch (Exception e) {
@@ -56,10 +73,15 @@ public class RegionRepositoryImp implements RegionRepository {
         }
     }
 
+    /**
+     * @param region region
+     * @return region
+     * @throws Exception
+     */ 
     @Override
     public Region createRegion(Region region) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO regiones (id_region, nom_reg, geom) VALUES (:id_region2, :nombre2, :geom2)";
+            String sql = "INSERT INTO regiones (id_region, nom_reg, geom) VALUES (:id_region2, :nombre2, ST_GeomFromText( :geom2))";
             conn.createQuery(sql)
                     .addParameter("id_region2", region.getId_region())
                     .addParameter("nombre2", region.getNom_reg())
@@ -73,10 +95,11 @@ public class RegionRepositoryImp implements RegionRepository {
         }
     }
 
+
     @Override
     public void deleteRegionById(long id) {
         try (Connection conn = sql2o.open()) {
-            String sql = "DELETE FROM regiones WHERE id = :id";
+            String sql = "DELETE FROM regiones WHERE id_region = :id";
             conn.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
@@ -89,7 +112,7 @@ public class RegionRepositoryImp implements RegionRepository {
     @Override
     public void updateRegion(Region region) {
         try (Connection conn = sql2o.open()) {
-            String sql = "UPDATE regiones SET id_region = :id_region2, nom_reg = :nombre2, geom = :geom2 WHERE id = :id";
+            String sql = "UPDATE regiones SET id_region = :id_region2, nom_reg = :nombre2, geom = ST_GeomFromText( :geom2) WHERE id = :id";
             conn.createQuery(sql)
                     .addParameter("id_region2", region.getId_region())
                     .addParameter("nombre2", region.getNom_reg())

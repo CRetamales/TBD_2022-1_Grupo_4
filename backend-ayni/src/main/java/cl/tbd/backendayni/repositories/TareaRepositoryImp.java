@@ -52,7 +52,7 @@ public class TareaRepositoryImp implements TareaRepository {
     public List<Tarea> getAll() {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(
-                    "SELECT id, id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, cast (geom as TEXT) FROM tarea ORDER BY tarea.id ASC")
+                    "SELECT id, id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, ST_AsText(geom) AS geom FROM tarea ORDER BY tarea.id ASC")
                     .executeAndFetch(Tarea.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -176,7 +176,7 @@ public class TareaRepositoryImp implements TareaRepository {
      */
     @Override
     public List<Tarea> getTareaByIdEmergencia(long id) {
-        String SQL_SELECT = "SELECT id, id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, cast (geom as TEXT) FROM tarea WHERE tarea.id_emergencia = :id";
+        String SQL_SELECT = "SELECT id, id_emergencia, nombre, descripcion, fecha, requerimientos, longitude, latitude, ST_AsText(geom) AS geom FROM tarea WHERE tarea.id_emergencia = :id";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(SQL_SELECT)
                     .addParameter("id", id)
@@ -199,7 +199,7 @@ public class TareaRepositoryImp implements TareaRepository {
      */
     @Override
     public List<Tarea> getTareaByIdRegion(long id){
-        String SQL_SELECT = "SELECT tarea.id, tarea.id_emergencia, tarea.nombre, tarea.descripcion, tarea.fecha, tarea.requerimientos, tarea.longitude, tarea.latitude, cast (tarea.geom as TEXT) FROM  tarea JOIN regiones ON ST_Intersects(regiones.geom,tarea.geom) WHERE regiones.id_region = :id";
+        String SQL_SELECT = "SELECT tarea.id, tarea.id_emergencia, tarea.nombre, tarea.descripcion, tarea.fecha, tarea.requerimientos, tarea.longitude, tarea.latitude, ST_AsText(tarea.geom) AS geom FROM  tarea JOIN regiones ON ST_Intersects(regiones.geom,tarea.geom) WHERE regiones.id_region = :id";
         try(Connection conn = sql2o.open()){
             return conn.createQuery(SQL_SELECT)
                     .addParameter("id", id)
