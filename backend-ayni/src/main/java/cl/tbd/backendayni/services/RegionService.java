@@ -59,7 +59,7 @@ public class RegionService {
      * @param region
      * @return void
      */
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateById/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public void updateById(@RequestBody Region region) {
         regionRepository.updateRegion(region);
