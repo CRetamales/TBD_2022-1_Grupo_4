@@ -2,63 +2,63 @@
 <body>
     <Navbar/>
     <div class="wrapper fadeInDown scrollDiv col-sm" style="background-color: #4f3185">
-        
-        <div v-for="(item, index) in items_emergencia" :key="index" id="formTareasID" style="background-color: #169691">
-        <h1>{{item.nombre}} id: {{param}}</h1>
+        <!-- TWO CONTAINER -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="background-color: #169691">
+                        <div class="card-body">
+                            <h5 class="card-title">Emergencia</h5>
+                            <p class="card-text">
+                                <div class="form-group">        
+                                    <div v-for="(item,index) in items_emergencia" :key="index">
+                                        <h1>{{item.nombre}} id: {{param}}</h1>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm">
+                                        <div id="mapid"></div>
+                                    </div>
+                                </div>
+                                <div v-for="(item,index) in items_emergencia" :key="index">
+                                        <h4>{{item.descripcion}}</h4>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div style="padding-bottom: 10px">
+                        <a href="/NuevaTarea">
+                            <button type="button" class="btn btn-success">Nueva tarea</button>
+                        </a>
+                    </div>
+                    <div>
+                        <span>
 
-        <!-- Mapa -->  
-        <!-- Descripcion -->
-        <p>
-            {{item.descripcion}}
-        </p>
-
-        <!-- Botones -->
-
-        <div class="contenedorDos">
-            <div>
-            <a href="#">
-                <button type="button" class="btn btn-primary btn-lg">
-                Aceptar
-                </button>
-            </a>
+                        </span>
+                    </div>
+                    <div class="card" style="background-color:#169691">
+                        <div class="card-body">
+                            <h5 class="card-title">Tareas</h5>
+                                 <div  v-for="(item, index) in items_tarea" :key="index">
+                                    <div>
+                                        <h1> </h1>
+                                        <a v-bind:href="'../TareaId/'+item.id">
+                                        <button class="botonDos"><span>{{item.nombre}}</span></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            <p class="card-text">
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div> 
 
-            <div>
-            <a href="#">
-                <button type="button" class="btn btn-primary btn-lg">
-                Rechazar
-                </button>
-            </a>
-            </div>
-        </div>
-    </div>
 
-    <!-- Botones Emergencia -->
-    <div class ="col-sm" style="padding-top:30px">
-        
-        <div  v-for="(item, index) in items_tarea" :key="index">
-            <div>
-                <h1> </h1>
-                <a v-bind:href="'../TareaId/'+item.id">
-                <button class="botonDos"><span>{{item.nombre}}</span></button>
-                </a>
-            </div>
-        </div>
-        <div>
-            <h1> </h1>
-            <a href="../Tareas">
-            <button class="botonDos"><span>Mas Tareas</span></button>
-            </a>
-        </div>
-    </div>
-    <div class ="col-sm" style="padding-top:30px">
-        <div>
-            <a href="/NuevaTarea">
-                <button type="button" class="btn btn-success">Nueva tarea</button>
-            </a>
-        </div>
-    </div>
-    </div>
 </body>
 </template>
 
@@ -89,8 +89,19 @@ export default {
             message:'', 
             mymap:null, //objeto de mapa(DIV)
             selected:'',
-            //regiones:[],
+            regiones:[],
         }
+    },
+    computed:{
+      point(){ // función computada para representar el punto seleccionado
+        if(this.latitude && this.longitude){
+          let lat = this.latitude.toFixed(3);
+          let lon = this.longitude.toFixed(3);
+          return `(${lat}, ${lon})`;
+        }else{
+          return '';
+        }
+      }
     },
     methods:{
         //Se obtiene la emergencia con el id
@@ -113,9 +124,59 @@ export default {
                 console.log(error);
             })
         },
- 
+        clearMarkers:function(){ //eliminar marcadores
+        
+        this.points.forEach(p=>{
+            this.mymap.removeLayer(p);
+        })
+        this.points = [];
+        },  
+        async getPoints(map){
+            try{
+                //Se llama al servicio para obtener los puntos de la tarea
+                let response = await axios.get('/tarea/getTareaByIdEmergencia/'+this.param);
+                let dataPoints = response.data;
+                //Se itera por cada punto
+                dataPoints.forEach(point => {
+                    //Se crea el marcador para cada punto
+                    let p = [point.longitude, point.latitude]
+                    let marker = L.marker(p, {icon: myIcon})
+                    .bindPopup(point.nombre)
+
+                    //Se agrega a la lista
+                    this.points.push(marker);
+                });
+
+                //Los puntos de la lista se agregan al mapa
+                this.points.forEach(p=>{
+                    p.addTo(map);
+                })
+            } catch (error) {
+                console.log(error);
+            } 
+
+        }, 
     },
     mounted:function(){
+
+        let _this = this;
+        //Se asigna el mapa al elemento con id="mapid"
+
+        this.mymap = L.map('mapid').setView([-33.456, -70.648], 7);
+        //Se definen los mapas de bits de OSM
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 10
+        }).addTo(this.mymap);
+
+        //Evento click obtiene lat y long actual
+        this.mymap.on('click', function(e) {
+            _this.latitude = e.latlng.lat;
+            _this.longitude =e.latlng.lng;
+        });
+
+        //Se agregan los puntos mediante llamada al servicio
+        this.getPoints(this.mymap);
 
         //Se obtiene la emergencia con el id
         axios.get('/emergencia/getById/'+this.param)
@@ -134,13 +195,14 @@ export default {
             console.log(error);
         })
     },
+    created:function(){
+        this.getPoints(this.mymap);
+    },
 }
 </script>
 <style>
-/* Estilos necesarios para definir el objeto de mapa */
-#mapid { 
-  height: 400px; 
-  width:600px;
+#mapid{
+    height: 400px;
+    width: 500px;
 }
 </style>
-

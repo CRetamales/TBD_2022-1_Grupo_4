@@ -1,20 +1,32 @@
 <template>
 <body>
   <div class ="contenedorTres">
+    <div class="row">
+      <span><br></br></span>
+      <div class = "col-lg-4">
+        Aqui va el mapa
+      </div>
 
-    <div v-for="(item, index) in items" :key="index">
-      <h1> </h1>
-      <a v-bind:href="'TareasId/'+item.id">
-        <button class="botonDos"><span>{{item.nombre}}</span></button>
-      </a>
+      <div class = "col-lg-4">
+        <div class="list-group">
+          <a v-for="(item, index) in items" :key="index" v-bind:href="'TareasId/'+item.id" class="list-group-item list-group-item-action" aria-current="true" style="width: 380px; background-color: #169691;">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{item.nombre}}</h5>
+              <small>{{item.fecha}}</small>
+            </div>
+            <p class="mb-1">{{item.descripcion}}</p>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div>
-      <a href="/NuevaTarea">
-        <button type="button" style="position: absolute; top: 60px; left: 650%; width : 150px ; padding: 10px" class="btn btn-success">Nueva Tarea</button>
-      </a>
-  </div>
+    <div>
+        <a href="/NuevaTarea">
+          <button type="button" style="position: absolute; top: 60px; left: 650%; width : 150px ; padding: 10px" class="btn btn-success">Nueva Tarea</button>
+        </a>
+    </div>
+    </div>
+    
 </body>
 </template>
 
