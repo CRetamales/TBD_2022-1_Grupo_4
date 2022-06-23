@@ -186,6 +186,7 @@ export default {
           let dataPoints = response.data;
           console.log(response.data);
           this.clearMarkers(this.mymap);
+          this.items = response.data;
           //Se itera por los puntos
           dataPoints.forEach(point => {
             //Se crea un marcador por cada punto
