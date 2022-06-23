@@ -9,6 +9,11 @@
           <div class="card" style="background-color: #169691">
             <div class="card-body">
               <h5 class="card-title">Tareas</h5>
+              <select v-model="selected">
+                <option disabled value="">Seleccione una región</option>
+                <option v-for="(region, key) in regiones" :key="region.id" :value="region.id_region">{{region.nom_reg}}</option>  
+              </select>
+              <button type="button" @click="setTareasRegion(selected)">Consultar</button>
               <p class="card-text">                 
                 <div class="form-group">
                     <div class="col-sm">
@@ -106,6 +111,9 @@ export default {
                   let response2 = await this.$axios.get("/tarea");
                   this.items = response2.data;
                   console.log(response2);
+                  let response = await this.$axios.get("/region");
+                  this.regiones = response.data;
+                  console.log(response);
               } catch (error) {
                   console.log('error', error);
               }
@@ -116,58 +124,116 @@ export default {
             this.mymap.removeLayer(p);
         })
         this.points = [];
-        },  
+        },
+        async createPoint(){ //Crear un nuevo punto
+          this.message = '';
+          let newPoint ={
+            name: this.name,
+            latitude: this.latitude,
+            longitude: this.longitude
+          }
+          
+          try {
+            let response = await axios.post('http://localhost:3000/tarea' ,newPoint);
+            console.log('response', response.data);
+            let id = response.data.id;
+            this.message = `${this.name} fue creado con éxito con id: ${id}`;
+            this.name = '';
+            this.clearMarkers(this.mymap);
+            this.getPoints(this.mymap)
+          } catch (error) {
+          console.log('error', error); 
+          this.message = 'Ocurrió un error'
+          }
+        },
         async getPoints(map){
-            try{
-                //Se llama al servicio para obtener los puntos de la tarea
-                let response = await axios.get('/tarea');
-                let dataPoints = response.data;
-                //Se itera por cada punto
-                dataPoints.forEach(point => {
-                    //Se crea el marcador para cada punto
-                    let p = [point.longitude, point.latitude]
-                    let marker = L.marker(p, {icon: myIcon})
-                    .bindPopup(point.nombre)
-
-                    //Se agrega a la lista
-                    this.points.push(marker);
-                });
-
-                //Los puntos de la lista se agregan al mapa
-                this.points.forEach(p=>{
-                    p.addTo(map);
-                })
-            } catch (error) {
-                console.log(error);
-            } 
-
-        }, 
+          try {
+            //se llama el servicio 
+            let response = await axios.get('http://localhost:3000/tarea');
+            let dataPoints = response.data;
+            //Se itera por los puntos
+            dataPoints.forEach(point => {
+              //Se crea un marcador por cada punto
+              let p =[point.longitude, point.latitude]
+              let marker = L.marker(p, {icon:myIcon}) //se define el ícono del marcador
+              .bindPopup(point.nombre) //Se agrega un popup con el nombre
+              
+              //Se agrega a la lista
+              this.points.push(marker);
+            });
+            //Los puntos de la lista se agregan al mapa
+            this.points.forEach(p=>{
+              p.addTo(map)
+            })
+          } catch (error) {
+          console.log('error', error); 
+          }
+          
+        },
+        async getRegiones(){
+          try{
+            let response = await axios.get('http://localhost:3000/region');
+            this.regiones = response.data;
+            console.log(response.data); 
+          } catch (error) {
+            console.log('error', error); 
+          }
+        },
+        async setTareasRegion(){
+        try{
+          console.log(this.selected);
+          let response = await axios.get('http://localhost:3000/tarea/getTareaByIdRegion/'+this.selected);
+          let dataPoints = response.data;
+          console.log(response.data);
+          this.clearMarkers(this.mymap);
+          //Se itera por los puntos
+          dataPoints.forEach(point => {
+            //Se crea un marcador por cada punto
+            let p =[point.longitude, point.latitude];
+            console.log(p);
+            let marker = L.marker(p, {icon:myIcon}) //se define el ícono del marcador
+            .bindPopup(point.nombre) //Se agrega un popup con el nombre
+            
+            //Se agrega a la lista
+            this.points.push(marker);
+          });
+          console.log(this.points);
+          //Los puntos de la lista se agregan al mapa
+          this.points.forEach(p=>{
+            p.addTo(this.mymap)
+          })
+        } catch (error) {
+        console.log('error', error); 
+        }
+      },
     },
+    
+      
+    
     mounted:function(){
-
-        let _this = this;
-        //Se asigna el mapa al elemento con id="mapid"
-
-        this.mymap = L.map('mapid').setView([-33.456, -70.648], 7);
-        //Se definen los mapas de bits de OSM
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 5
-        }).addTo(this.mymap);
-
-        //Evento click obtiene lat y long actual
-        this.mymap.on('click', function(e) {
-            _this.latitude = e.latlng.lat;
-            _this.longitude =e.latlng.lng;
-        });
-
-        //Se agregan los puntos mediante llamada al servicio
-        this.getPoints(this.mymap);
-    },
-    created:function(){
-        this.getData();
-        this.getPoints(this.mymap);
-    },
+    let _this = this;
+    //Se asigna el mapa al elemento con id="mapid"
+     this.mymap = L.map('mapid').setView([-33.456, -70.648], 7);
+    //Se definen los mapas de bits de OSM
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    	maxZoom: 10
+    }).addTo(this.mymap);
+    //Evento click obtiene lat y long actual
+    this.mymap.on('click', function(e) {
+      _this.latitude = e.latlng.lat;
+      _this.longitude =e.latlng.lng;
+    });
+    //Se agregan los puntos mediante llamada al servicio
+    this.getPoints(this.mymap);
+  },
+  //Función que se ejecuta al cargar el componente
+  created:function(){
+    this.getData();
+    this.getRegiones();
+    this.getPoints(this.mymap);
+  },
+  
 }
 </script>
 <style>
