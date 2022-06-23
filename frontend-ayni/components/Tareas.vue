@@ -134,7 +134,7 @@ export default {
           }
           
           try {
-            let response = await axios.post('/tarea' ,newPoint);
+            let response = await axios.post('http://localhost:3000/tarea' ,newPoint);
             console.log('response', response.data);
             let id = response.data.id;
             this.message = `${this.name} fue creado con éxito con id: ${id}`;
@@ -149,7 +149,7 @@ export default {
         async getPoints(map){
           try {
             //se llama el servicio 
-            let response = await axios.get('/tarea');
+            let response = await axios.get('http://localhost:3000/tarea');
             let dataPoints = response.data;
             //Se itera por los puntos
             dataPoints.forEach(point => {
@@ -172,7 +172,7 @@ export default {
         },
         async getRegiones(){
           try{
-            let response = await axios.get('/region');
+            let response = await axios.get('http://localhost:3000/region');
             this.regiones = response.data;
             console.log(response.data); 
           } catch (error) {
@@ -182,11 +182,11 @@ export default {
         async setTareasRegion(){
         try{
           console.log(this.selected);
-          let response = await axios.get('/tarea/getTareaByIdRegion/'+this.selected);
+          let response = await axios.get('http://localhost:3000/tarea/getTareaByIdRegion/'+this.selected);
           let dataPoints = response.data;
           console.log(response.data);
-          this.clearMarkers(this.mymap);
           this.items = response.data;
+          this.clearMarkers(this.mymap);
           //Se itera por los puntos
           dataPoints.forEach(point => {
             //Se crea un marcador por cada punto
