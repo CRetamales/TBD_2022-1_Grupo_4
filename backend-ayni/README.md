@@ -25,4 +25,4 @@ TBD_2022-1_Grupo_4 -> - backend-ayni ->  - src/main/java/cl/tbd/backendayni ->  
   - Luego de estar dentro backend-ayni debemos levantar la parte del backend del proyecto, de esta manera, ingresando "gradlew bootRun" (en caso de tener una terminal que tenga comandos de linux o powershell de windows, puede ingresar con "./gradlew bootRun"), esto levantara el apartado de backend en el puerto 3000 en localhost (http://localhost:3000).
   - En caso de que el mensaje de exito no se genere o no se visualize la base de datos, debera comprobar sus creedenciales de postgres en el archivo "application.properties", de manera más especifica, en la linea 4 y 5, donde se deben reemplazar los valores de "user" y "password" con los propios. Una vez editado, se guardan los cambios y se vuelve a levantar
 
-  - (*): npm, java 11+, gradle 5+, node js, vue, nuxt, postgresql  
+  - (*): npm, java 11+, gradle 5+, node js, vue, nuxt, postgresql, python 3, psycopg2.
