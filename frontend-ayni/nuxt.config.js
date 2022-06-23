@@ -90,6 +90,7 @@ export default {
   proxy: {
     "/emergencia": 'http://localhost:3000',
     "/tarea": 'http://localhost:3000',
+    "/region": 'http://localhost:3000',
     "/ranking/getRankingByIdTarea": 'http://localhost:3000',
     "/tarea/getTareaByIdEmergencia":'http://localhost:3000',
   },
